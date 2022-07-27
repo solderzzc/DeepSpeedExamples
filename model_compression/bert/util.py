@@ -303,7 +303,7 @@ def save_checkpoint_and_config(args, model, config, tokenizer, ds_config=None):
         if args.local_rank in [-1, 0]:
             torch.save(model_will_save.state_dict(), output_model_file)
             model_to_save.config.to_json_file(output_config_file)
-            tokenizer.save_vocabulary(output_dir)
+            tokenizer.save_pretrained(save_directory=output_dir)
             if args.deepspeed:
                 new_json_path = os.path.join(output_dir, "ds_config.json")
                 with open(new_json_path, 'w') as f:
