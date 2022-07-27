@@ -1582,8 +1582,8 @@ class BertForSequenceClassification(BertPreTrainedModel):
             elif self.config.problem_type == "multi_label_classification":
                 loss_fct = BCEWithLogitsLoss()
                 pred=logits.argmax(dim=-1)
-                #loss = loss_fct(logits, labels.float())
-                loss = loss_fct(pred, labels)
+                #loss = loss_fct(logits, labels)
+                loss = loss_fct(pred, labels.float())
         if not return_dict:
             output = (logits,) + outputs[2:]
             return ((loss,) + output) if loss is not None else output
