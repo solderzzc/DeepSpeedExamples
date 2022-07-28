@@ -360,7 +360,7 @@ def save_clean_best_model(args, print_rank_0,  model, tokenizer, config, redunda
             output_config_file = os.path.join(output_dir_best_clean, CONFIG_NAME)
             torch.save(model_to_save.state_dict(), output_model_file) 
             model_to_save.config.to_json_file(output_config_file)
-            tokenizer.save_vocabulary(output_dir_best_clean)
+            # tokenizer.save_vocabulary(output_dir_best_clean)
             if args.deepspeed:
                 new_json_path = os.path.join(args.output_dir, "ds_config.json")
                 with open(new_json_path, 'w') as f:
